@@ -2,6 +2,7 @@
   "name": "harry_potter",
   "version": "1.0.0",
   "scripts": {
+    "test": "jasmine"
   },
   "dependencies": {
   }
