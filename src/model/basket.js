@@ -15,13 +15,16 @@ Basket.prototype.addBasketItem = function(item) {
 };
 
 Basket.prototype.findBasketItem = function(item) {
-  this.basketItems.forEach(function(basketItem) {
+  var existBasketItem;
 
+  this.basketItems.forEach(function(basketItem) {
     var isExist = basketItem.book.title === item.book.title;
     if(isExist) {
-      return basketItem;
+      existBasketItem = basketItem;
     }
   });
+
+  return existBasketItem;
 };
 
 module.exports = Basket;
