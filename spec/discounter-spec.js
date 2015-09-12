@@ -15,13 +15,6 @@ describe('Discounter', function(){
     expect(discounter.discounts).toEqual(discounts);
   });
 
-  describe('#allName()', function() {
-
-    it('should return all discounts key(name)', function() {
-      expect(discounter.allName()).toEqual(Object.keys(discounts));
-    });
-  });
-
   describe('#find(discountName)', function() {
 
     it('when discountName exist should return a discount', function() {
