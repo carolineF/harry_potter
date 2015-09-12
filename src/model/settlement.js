@@ -23,14 +23,17 @@ Settlement.prototype.account = function(basketItems) {
   var amounts = [];
   var count = basketItems.length;
 
-  while(count > 2) {
+  if(count < 2) {
+    return basketItems[0] ? basketItems[0].book.price : 0;
+  }
+
+  while(count >= 2) {
 
     var basketArray = this.format(basketItems);
-    var amount = this.getAmount(basketArray, count);
+    var amount = this.getAmount(basketArray, count--);
     if(amount > 0) {
       amounts.push(amount);
     }
-    count--;
   }
 
   return Math.min.apply(Math, amounts);
