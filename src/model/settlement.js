@@ -3,7 +3,7 @@
 var Discounter = require('./discounter');
 
 function Settlement() {
-  this.discounter = new Discounter();
+
 }
 
 Settlement.prototype.format = function(basketItems) {
@@ -24,7 +24,7 @@ Settlement.prototype.account = function(basketItems) {
   var count = basketItems.length;
 
   if(count < 2) {
-    return basketItems[0] ? basketItems[0].book.price : 0;
+    return basketItems[0] ? basketItems[0].book.price * basketItems[0].count : 0;
   }
 
   while(count >= 2) {
@@ -65,19 +65,19 @@ Settlement.prototype.getAmount = function(basketArray, count) {
 
     amount += price - price * discount;
   }
-
-  return price;
 };
 
 Settlement.prototype.getDiscount = function(length) {
+  var discounter = new Discounter();
+
   if(length === 2) {
-    return this.discounter.find('TWO_DIFFERENT');
+    return discounter.find('TWO_DIFFERENT');
   }else if(length === 3) {
-    return this.discounter.find('THREE_DIFFERENT');
+    return discounter.find('THREE_DIFFERENT');
   }else if(length === 4) {
-    return this.discounter.find('FOUR_DIFFERENT');
+    return discounter.find('FOUR_DIFFERENT');
   }else if(length === 5) {
-    return this.discounter.find('FIVE_DIFFERENT');
+    return discounter.find('FIVE_DIFFERENT');
   }else {
     return 0;
   }
