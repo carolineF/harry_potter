@@ -2,7 +2,8 @@
   "name": "harry_potter",
   "version": "1.0.0",
   "scripts": {
-    "test": "jasmine"
+    "test": "jasmine",
+    "start": "node app.js"
   },
   "dependencies": {
   }
